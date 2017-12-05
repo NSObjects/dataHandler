@@ -207,6 +207,8 @@ func mergeViewnings(productId uint32, date time.Time) {
 					Date:               l.Time,
 					Counts:             string(counts(vs)),
 					ProductId:          productId,
+					Created:            time.Now(),
+					Updated:            time.Now(),
 				}
 				_, err := db.AppWish.Insert(&viewningsStatistics)
 				if err != nil {
