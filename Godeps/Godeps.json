@@ -1,0 +1,113 @@
+{
+	"ImportPath": "dataHandler",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v1.0.3-19-g95cd2b9",
+			"Rev": "95cd2b9c79aa5e72ab0bc69b7ccc2be15bf850f6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/config",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/context",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/context/param",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/grace",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/logs",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/orm",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/session",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/toolbox",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/astaxie/beego/utils",
+			"Comment": "v1.9.0-6-gc5118e9",
+			"Rev": "c5118e9535f237996bae7c7baebe4ed4247cb2c6"
+		},
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.3-50-g9181e3a",
+			"Rev": "9181e3a86a19bacd63e68d43ae8b7b36320d8092"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/now",
+			"Rev": "d939ba741945c047cac69c329c5fb0d6b4a06520"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "94eea52f7b742c7cbe0b03b22f0c4c8631ece122"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "8b4580aae2a0dd0c231a45d3ccb8434ff533b840"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/windows",
+			"Rev": "8b4580aae2a0dd0c231a45d3ccb8434ff533b840"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v5",
+			"Comment": "v5.2.9",
+			"Rev": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v5/internal",
+			"Comment": "v5.2.9",
+			"Rev": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v5/internal/consistenthash",
+			"Comment": "v5.2.9",
+			"Rev": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v5/internal/hashtag",
+			"Comment": "v5.2.9",
+			"Rev": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v5/internal/pool",
+			"Comment": "v5.2.9",
+			"Rev": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v5/internal/proto",
+			"Comment": "v5.2.9",
+			"Rev": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0"
+		}
+	]
+}
