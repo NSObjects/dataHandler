@@ -310,30 +310,6 @@ func merge(productId uint32, start time.Time, end time.Time) {
 
 func mergeIncrementalWith(productId uint32, start time.Time, end time.Time) {
 
-	var productIncremental models.EveryDayIncremental
-	err := db.AppWish.QueryTable("every_day_incremental").
-		Filter("product_id", productId).
-		Filter("created", time.Unix(start.Unix()+60, 0)).
-		One(&productIncremental)
-
-	if err != nil {
-		if err == orm.ErrNoRows {
-			productIncremental.ProductId = productId
-			productIncremental.Created = time.Unix(start.Unix()+60, 0)
-			productIncremental.Updated = time.Now()
-			_, err = db.AppWish.Insert(&productIncremental)
-			if err != nil {
-				log.WithFields(logrus.Fields{
-					"incremental.go": 328,
-				}).Error(err)
-			}
-		} else {
-			log.WithFields(logrus.Fields{
-				"incremental.go": 333,
-			}).Error(err)
-		}
-	}
-
 	qs := db.DataSource.QueryTable("t_incremental")
 
 	var datas []tmodels.TIncremental
@@ -359,13 +335,12 @@ func mergeIncrementalWith(productId uint32, start time.Time, end time.Time) {
 
 	var numBoughtIncremental int
 	var ratingCountIncremental int
-	var numEnteredIncremental int
 	var priceIncremental float64
 
 	if len(datas) > 1 {
 		numBoughtIncremental = datas[len(datas)-1].NumBought - datas[0].NumBought
 		ratingCountIncremental = datas[len(datas)-1].RatingCount - datas[0].RatingCount
-		numEnteredIncremental = datas[len(datas)-1].NumCollection - datas[0].NumCollection
+		//numEnteredIncremental = datas[len(datas)-1].NumCollection - datas[0].NumCollection
 		priceIncremental = datas[len(datas)-1].Price - datas[0].Price
 	}
 
@@ -379,18 +354,45 @@ func mergeIncrementalWith(productId uint32, start time.Time, end time.Time) {
 		if yestdayincrmental.NumBought > 0 {
 			numBoughtIncremental += datas[0].NumBought - yestdayincrmental.NumBought
 			ratingCountIncremental += datas[0].RatingCount - yestdayincrmental.RatingCount
-			numEnteredIncremental += datas[0].NumCollection - yestdayincrmental.NumEntered
+			//numEnteredIncremental += datas[0].NumCollection - yestdayincrmental.NumEntered
 			priceIncremental += datas[0].Price - yestdayincrmental.Price
 		}
 	}
 
+	if numBoughtIncremental <= 0 {
+		return
+	}
+
+	var productIncremental models.EveryDayIncremental
+	err := db.AppWish.QueryTable("every_day_incremental").
+		Filter("product_id", productId).
+		Filter("created", time.Unix(start.Unix()+60, 0)).
+		One(&productIncremental)
+
+	if err != nil {
+		if err == orm.ErrNoRows {
+			productIncremental.ProductId = productId
+			productIncremental.Created = time.Unix(start.Unix()+60, 0)
+			productIncremental.Updated = time.Now()
+			_, err = db.AppWish.Insert(&productIncremental)
+			if err != nil {
+				log.WithFields(logrus.Fields{
+					"incremental.go": 328,
+				}).Error(err)
+			}
+		} else {
+			log.WithFields(logrus.Fields{
+				"incremental.go": 333,
+			}).Error(err)
+		}
+	}
+
 	if numBoughtIncremental > 0 ||
-		numEnteredIncremental > 0 ||
 		priceIncremental > 0 {
 		productIncremental.Updated = time.Now()
 		productIncremental.NumBoughtIncremental = numBoughtIncremental
 		productIncremental.RatingCountIncremental = ratingCountIncremental
-		productIncremental.NumEnteredIncremental = numEnteredIncremental
+		//productIncremental.NumEnteredIncremental = numEnteredIncremental
 		productIncremental.PriceIncremental = priceIncremental
 
 		productIncremental.BeginningOfDay = datas[0].Updated

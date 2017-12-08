@@ -388,7 +388,7 @@ func updateProduct(data string) {
 		}
 	}
 
-	categoryByProductTag(tags, product.Id)
+	//categoryByProductTag(tags, product.Id)
 	categoryByProductTrueTag(strings.Split(product.TrueTagIds, ","), product.Id)
 }
 

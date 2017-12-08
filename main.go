@@ -89,17 +89,17 @@ func task3() {
 		handler.InsertRank(start, end, 1)
 	})
 
-	runTask(60, "收藏量排名", func() {
-		handler.InsertRank(start, end, 2)
-	})
-
-	runTask(60, "计算加速度", func() {
-		handler.CalculateRank(start)
-	})
-
-	runTask(60, "缓存排名加速度", func() {
-		handler.CacheRank(start)
-	})
+	//runTask(60, "收藏量排名", func() {
+	//	handler.InsertRank(start, end, 2)
+	//})
+	//
+	//runTask(60, "计算加速度", func() {
+	//	handler.CalculateRank(start)
+	//})
+	//
+	//runTask(60, "缓存排名加速度", func() {
+	//	handler.CacheRank(start)
+	//})
 }
 
 func runTask(timeout int64, msg string, f func()) {

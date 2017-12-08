@@ -85,7 +85,7 @@ func CacheData() {
 		lastId = weekIncremental[len(weekIncremental)-1].Id
 
 		var wg sync.WaitGroup
-		p := util.New(NumConcurrent)
+		p := util.New(15)
 
 		for i, value := range weekIncremental {
 			wg.Add(1)
@@ -131,7 +131,7 @@ func CacheSevenDayRingRate() {
 		lastId = sort[len(sort)-1].Id
 
 		var wg sync.WaitGroup
-		p := util.New(NumConcurrent)
+		p := util.New(15)
 
 		for i, value := range sort {
 			wg.Add(1)
@@ -165,7 +165,7 @@ func CacheTotalSalesCache() {
 	}
 
 	var wg sync.WaitGroup
-	p := util.New(NumConcurrent)
+	p := util.New(15)
 
 	for i, value := range products {
 		wg.Add(1)
@@ -366,6 +366,7 @@ func CacheViewingStatistics(date time.Time) {
 	}
 
 	for _, v := range viewingStatistics {
+		vs = append(vs, v)
 		var p models.EveryDayIncremental
 
 		err := o.QueryTable("every_day_incremental").

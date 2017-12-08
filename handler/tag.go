@@ -91,6 +91,8 @@ func categoryByProductTag(tags []string, productId uint32) {
 				pt := models.ProductTag{
 					TagId:     id,
 					ProductId: productId,
+					Created:   time.Now(),
+					Updated:   time.Now(),
 				}
 				if _, err := db.AppWish.Insert(&pt); err != nil {
 					if strings.Contains(err.Error(), "Duplicate entry") == false {
