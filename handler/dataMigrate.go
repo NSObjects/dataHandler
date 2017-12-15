@@ -389,7 +389,7 @@ func updateProduct(data string) {
 	}
 
 	//categoryByProductTag(tags, product.Id)
-	categoryByProductTrueTag(strings.Split(product.TrueTagIds, ","), product.Id)
+	//categoryByProductTrueTag(strings.Split(product.TrueTagIds, ","), product.Id)
 }
 
 func configProduct(productJson models.WishOrginalData) (p models.Product) {
