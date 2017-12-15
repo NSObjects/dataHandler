@@ -166,7 +166,7 @@ func mergeViewnings(productId uint32, date time.Time) {
 
 		if err != nil {
 			log.WithFields(logrus.Fields{
-				"merge_viwings.go": 83,
+				"merge_viwings.go": 169,
 			}).Error(err)
 			break
 		}
@@ -175,12 +175,17 @@ func mergeViewnings(productId uint32, date time.Time) {
 			var count int
 			for _, v := range viewing {
 				count += v.Count
+				_, err := db.AppWish.Insert(&v)
+				log.WithFields(logrus.Fields{
+					"merge_viewings.go": 180,
+				}).Error(err)
 			}
 			viewning := viewings{
 				Count:   count / len(viewing),
 				Created: end,
 			}
 			vs = append(vs, viewning)
+
 		}
 		t++
 
@@ -213,12 +218,12 @@ func mergeViewnings(productId uint32, date time.Time) {
 				_, err := db.AppWish.Insert(&viewningsStatistics)
 				if err != nil {
 					log.WithFields(logrus.Fields{
-						"merge_viwings.go": 128,
+						"merge_viwings.go": 221,
 					}).Error(err)
 				}
 			} else {
 				log.WithFields(logrus.Fields{
-					"merge_viwings.go": 133,
+					"merge_viwings.go": 226,
 				}).Error(err)
 			}
 		} else {
@@ -238,9 +243,10 @@ func mergeViewnings(productId uint32, date time.Time) {
 			_, err := db.AppWish.Update(&viewningsStatistics)
 			if err != nil {
 				log.WithFields(logrus.Fields{
-					"merge_viwings.go": 153,
+					"merge_viwings.go": 246,
 				}).Error(err)
 			}
+
 		}
 
 	}
